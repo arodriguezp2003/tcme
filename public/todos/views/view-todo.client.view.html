@@ -1,14 +1,14 @@
 <section ng-controller="TodosController" ng-init="findOne()">
 	<h1 ng-bind="todo.titulo"></h1>
 	<div ng-show="autentication.user._id === todo.creator._id">
-		<a href="/#!/todos/{{todos._id}}/edit">Editar</a>
+		<a href="/#!/todos/{{todo._id}}/edit">Editar</a>
 		<a href="#" ng-click="delete()">Eliminar</a>
 	</div>
 	<small>
 		<em>Postear</em>
-		<em ng-bind="todo.creado | date: 'mediumDate'"></em>
+		<em ng-bind="todo.creado.firstName | date: 'mediumDate'"></em>
 		<em>by</em>
-		<em ng-bind="todo.creador.username"></em>
+		<em ng-bind="todo.creador.firstName"></em>
 	</small>
-	<p ng-bind="todo.descripcion"></p>
+	<p ng-bind="todo.descripcion"></p> jaja
 </section>

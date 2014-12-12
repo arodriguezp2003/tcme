@@ -7,7 +7,7 @@
 				<em>Postear</em>
 				<em ng-bind="todo.creado | date: 'mediumDate'"></em>
 				<em>by</em>
-				<em ng-bind="todo.creador"></em>
+				<em ng-bind="todo.creador.firstName"></em>
 			</small>
 			<p ng-bind="todo.descripcion"></p>
 		</li>

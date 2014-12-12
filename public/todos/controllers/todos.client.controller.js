@@ -9,7 +9,7 @@ app.controller('TodosController', ['$scope','$routeParams','$location','Auth','T
 			titulo : this.titulo,
 			descripcion : this.descripcion
 		});
-		
+
 		todo.$save(function(response){
 			alert("guado");
 			$location.path('/todos/' + response._id);	
@@ -22,8 +22,9 @@ app.controller('TodosController', ['$scope','$routeParams','$location','Auth','T
 		$scope.todos = Todos.query();
 	};
 	$scope.findOne  = function(){
-		$scope.todos = Todos.get({
-			todosId : $routeParams.todosId
+		
+		$scope.todo = Todos.get({
+			todoId : $routeParams.todoId
 		});
 	};
 	$scope.update = function(){
