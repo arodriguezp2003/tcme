@@ -6,5 +6,14 @@
 </head>
 <body>
 	<h1><%=title %></h1>
+	<% if (userFullName) { %>
+		<h2>Hola <%=userFullName%></h2>
+		<a href="/signout">Cerrar Session</a>
+	<% }else { %>
+		<a href="/signup">crear cuenta</a>
+		<a href="/signin"> Identificarse</a>
+	<% } %>
+	<br>
+	<h1>Welvome</h1>
 </body>
 </html>
