@@ -1,0 +1,18 @@
+<section ng-controller="TodosController" ng-init="find()">
+	<h1>Listado de Tarreas</h1>
+	<ul>
+		<li ng-repeat="todo in todos">
+			<a ng-href="#!/todos/{{todo._id}}" ng-bind="todo.titulo"></a>
+			<small>
+				<em>Postear</em>
+				<em ng-bind="todo.creado | date: 'mediumDate'"></em>
+				<em>by</em>
+				<em ng-bind="todo.creador"></em>
+			</small>
+			<p ng-bind="todo.descripcion"></p>
+		</li>
+	</ul>
+	<div ng-hide="!todos || todos.length">
+		No existen Tareas ¿Por que no <a href="/#!/todos/create">creas una</a>?
+	</div>
+</section>

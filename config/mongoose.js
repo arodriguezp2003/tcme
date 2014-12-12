@@ -5,6 +5,8 @@ var config   = require('./config'),
 module.exports = function() {
 	var db = mongoose.connect(config.db);
 	//cargar todos los modelos
-	require('../app/models/user.server.model.js');
+	require('../app/models/user.server.model');
+	require('../app/models/todo.server.model');
+
 	return db;
 } 

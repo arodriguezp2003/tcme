@@ -28,18 +28,18 @@ module.exports = function(app){
 	app.route('/signout')
 		.get(users.signout);
 
-	//google 
-	app.get('/oauth/google',passport.authenticate('google',{
-		scope: [
-			'https://www.googleapis.com/auth/userinfo.profile',
-			'https://www.googleapis.com/auth/userinfo.email'
-		],
-		failureRedirect: '/signin'
-	}));
-	
-	app.get('/oauth/google/callback',passport.authenticate('google',{
-		successRedirect: '/',
-		failureRedirect: '/signin',
-	}));
+
+	 // Configurar las rutas Google OAuth 
+  app.get('/oauth/google', passport.authenticate('google', {
+    scope: [
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/userinfo.email'
+    ],
+    failureRedirect: '/signin'
+  }));
+  app.get('/oauth/google/callback', passport.authenticate('google', {
+    failureRedirect: '/signin',
+    successRedirect: '/'
+  }));
 	app.param('userId',users.userByID);
 }

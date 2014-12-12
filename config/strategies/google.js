@@ -6,12 +6,14 @@ var passport = require('passport'),
 
 
 module.exports = function(){
+
 	passport.use(new GoogleStrategy({
 		clientID: config.google.clientID,
 		clientSecret: config.google.clientSecret,
 		callbackURL : config.google.callbackURL,
 		passReqToCallback: true
 	},function(req,accessToken,refreshToken,profile,done){
+		console.log("GOOOGLE AUTH");
 		var providerData = profile._json;
 		providerData.accessToken =accessToken;
 		providerData.refreshToken = refreshToken;
@@ -24,6 +26,8 @@ module.exports = function(){
 			providerId: profile.id,
 			providerData: providerData
 		};
+		console.log(providerUserProfile);
+
 		users.saveOAuthUserProfile(req,providerUserProfile,done);
 	}));
 }; 

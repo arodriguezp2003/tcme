@@ -1,0 +1,23 @@
+<section data-ng-controller="TodosController">
+	<h1>Nuevo Tarea</h1>
+	<form data-ng-submit="update()" novalidate>
+		<div>
+			<label for="">Titulo</label>
+			<div>
+				<input type="text" data-ng-model="todo.titulo" id="titulo" placeholder="titulo" required>
+			</div>
+		</div>
+		<div>
+			<label for="">Descripcion</label>
+			<div>
+				<textarea data-ng-model="todo.descripcion" id="descripcion" placeholder="descripcion" cols="30" rows="5"></textarea>
+			</div>
+		</div>
+		<div>
+			<input type="submit" value="Actualizar">
+		</div>
+		<div data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>
+</section>

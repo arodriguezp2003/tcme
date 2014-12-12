@@ -68,6 +68,43 @@ exports.signup = function(req,res,next) {
 		return res.redirect('/');
 	}
 };
+// Crear un nuevo método controller que crea nuevos usuarios 'OAuth'
+exports.saveOAuthUserProfile = function(req, profile, done) {
+  // Prueba a encontrar un documento user que fue registrado usando el actual provider OAuth
+  User.findOne({
+    provider: profile.provider,
+    providerId: profile.providerId
+  }, function(err, user) {
+    // Si ha ocurrido un error continua al siguiente middleware
+    if (err) {
+      return done(err);
+    } else {
+      // Si un usuario no ha podido ser encontrado, crea un nueo user, en otro caso, continua al siguiente middleware
+      if (!user) {
+        // Configura un posible username base username
+        var possibleUsername = profile.username || ((profile.email) ? profile.email.split('@')[0] : '');
+
+        // Encuentra un username único disponible
+        User.findUniqueUsername(possibleUsername, null, function(availableUsername) {
+          // Configura el nombre de usuario disponible 
+          profile.username = availableUsername;
+          
+          // Crear el user
+          user = new User(profile);
+
+          // Intenta salvar el nuevo documento user
+          user.save(function(err) {
+            // Continúa al siguiente middleware
+            return done(err, user);
+          });
+        });
+      } else {
+        // Continúa al siguiente middleware
+        return done(err, user);
+      }
+    }
+  });
+};
 
 exports.signout = function(req,res){
 	req.logout();
@@ -131,3 +168,9 @@ exports.userByID = function(req,res,next,id){
 		}
 	});
 }
+exports.requiredLogin = function(req,res,next){
+	if (!req.isAuthenticated()) {
+		return res.status(401).send({ message: 'Usuario no esta identificado'});
+	}
+	next();
+};

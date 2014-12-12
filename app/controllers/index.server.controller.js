@@ -5,6 +5,6 @@ exports.render = function(req,res){
 	req.session.lasVisit = new Date();
 	res.render('index',{
 		title: 'TCME',
-		userFullName: req.user ? req.user.fullName : ''
+		user: JSON.stringify(req.user)
 	});
 }

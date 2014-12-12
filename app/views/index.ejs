@@ -6,14 +6,34 @@
 </head>
 <body>
 	<h1><%=title %></h1>
-	<% if (userFullName) { %>
-		<h2>Hola <%=userFullName%></h2>
+	<% if (user) { %>
+		
 		<a href="/signout">Cerrar Session</a>
 	<% }else { %>
 		<a href="/signup">crear cuenta</a>
 		<a href="/signin"> Identificarse</a>
 	<% } %>
 	<br>
-	<h1>Welvome</h1>
+
+	<section ng-view></section>
+	<script>
+	window.user = <%- user || 'null' %>;
+	</script>
+
+	<script src="/lib/angular/angular.js"></script>
+	<script src="/lib/angular-route/angular-route.js"></script>
+	<script src="/lib/angular-resource/angular-resource.js"></script>
+	
+
+	<script src="/todos/todos.client.module.js"></script>
+	<script src="/todos/controllers/todos.client.controller.js"></script>
+	<script src="/todos/services/todos.client.service.js"></script>
+	<script src="/todos/config/todos.client.route.js"></script>
+
+	<script src="/users/users.client.module.js"></script>
+	<script src="/users/services/auth.client.service.js"></script>
+
+	<script src="/application.js"></script>
+
 </body>
 </html>
