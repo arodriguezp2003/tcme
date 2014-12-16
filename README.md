@@ -1,7 +1,7 @@
 TimeCheck Beta 1
 -----------------
 Servicios Node.JS 
-uoAuth, Facebook, Twitter
+oAuth, Facebook, Twitter
 API REST 
 
 ----

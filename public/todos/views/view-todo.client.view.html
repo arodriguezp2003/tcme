@@ -1,14 +1,43 @@
 <section ng-controller="TodosController" ng-init="findOne()">
-	<h1 ng-bind="todo.titulo"></h1>
-	<div ng-show="autentication.user._id === todo.creator._id">
-		<a href="/#!/todos/{{todo._id}}/edit">Editar</a>
-		<a href="#" ng-click="delete()">Eliminar</a>
+	<h1>
+			{{todo.titulo}}
+	</h1>
+
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	  		<div class="text-right" ng-show="autentication.user._id === todo.creator._id">
+		<div class="btn-group" role="group" aria-label="...">
+			<a class="btn btn-primary btn-xs" href="/#!/todos/{{todo._id}}/edit">Editar</a>
+			<a class="btn btn-primary btn-xs" href="#" ng-click="delete()">Eliminar</a>
+		</div>
+		</div>
+	    <small>
+			<em>creado</em>
+			<em ng-bind="todo.creado.firstName | date: 'mediumDate'"></em>
+			<em>por</em>
+			<em ng-bind="todo.creador.firstName"></em>
+		</small>
+		<p ng-bind="todo.descripcion"></p> 
+	  </div>
 	</div>
-	<small>
-		<em>Postear</em>
-		<em ng-bind="todo.creado.firstName | date: 'mediumDate'"></em>
-		<em>by</em>
-		<em ng-bind="todo.creador.firstName"></em>
-	</small>
-	<p ng-bind="todo.descripcion"></p> jaja
+
+<div class="panel panel-success">
+  <div class="panel-body text-center">
+     <h1 ng-bind="time">
+     	
+     	
+ 
+     </h1>
+     <small>
+     	<p>Fecha de Creacion:</p>
+     	<p>comentario: asfasfas asd a</p>
+     </small>
+     <hr>
+     <a class="form-control btn btn-danger ">Check Out</a>
+  </div>
+</div>
+
+
 </section>
+
+<a href="#!todos/"class="btn btn-danger">Volver </a>

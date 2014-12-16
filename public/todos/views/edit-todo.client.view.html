@@ -1,20 +1,22 @@
 <section data-ng-controller="TodosController" ng-init="findOne()">
 	<h1>Editar Tarea</h1>
 	<form data-ng-submit="update()" novalidate>
-		<div>
+		<div class="fomr-group">
 			<label for="">Titulo</label>
 			<div>
-				<input type="text" data-ng-model="todo.titulo" id="titulo" placeholder="titulo" required>
+				<input class="form-control" type="text" ng-model="todo.titulo" id="titulo" placeholder="titulo" required>
 			</div>
 		</div>
-		<div>
+		<div class="fomr-group">
 			<label for="">Descripcion</label>
 			<div>
-				<textarea data-ng-model="todo.descripcion" id="descripcion" placeholder="descripcion" cols="30" rows="5"></textarea>
+				<textarea class="form-control"  ng-model="todo.descripcion" id="descripcion" placeholder="descripcion" cols="30" rows="5"></textarea>
 			</div>
 		</div>
-		<div>
-			<input type="submit" value="Actualizar">
+		<div class="fomr-group">
+			<input class="btn btn-primary"type="submit" value="Actualizar">
+			<a href="#!todos/"class="btn btn-danger">Volver </a>
+
 		</div>
 		<div data-ng-show="error">
 			<strong data-ng-bind="error"></strong>

@@ -1,39 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title><%=title %></title>
-</head>
-<body>
-	<h1><%=title %></h1>
-	<% if (user) { %>
-		
-		<a href="/signout">Cerrar Session</a>
-	<% }else { %>
-		<a href="/signup">crear cuenta</a>
-		<a href="/signin"> Identificarse</a>
-	<% } %>
-	<br>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
+    <title>Timecheck</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap/dist/css/css1.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+     <link href="lib/bootstrap/dist/css/global.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+   <!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">Timecheck</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Tracking</a></li>
+              <li><a href="#!todos/">Tareas</a></li>
+              <li><a href="#">Reportes</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+             <% if (user) { %>
+              <li class="active"><a href="/signout">Logout<span class="sr-only">(current)</span></a></li>
+             <% }else { %>
+ 				<li class="active"><a href="/signup">Crear Cuenta<span class="sr-only">(current)</span></a></li>
+ 				<li ><a href="/signin">Login<span class="sr-only">(current)</span></a></li>
+             <% } %>
+            
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+   
 	<section ng-view></section>
 	<script>
 	window.user = <%- user || 'null' %>;
 	</script>
 
-	<script src="/lib/angular/angular.js"></script>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="/lib/angular/angular.js"></script>
 	<script src="/lib/angular-route/angular-route.js"></script>
 	<script src="/lib/angular-resource/angular-resource.js"></script>
-	
-
 	<script src="/todos/todos.client.module.js"></script>
 	<script src="/todos/controllers/todos.client.controller.js"></script>
 	<script src="/todos/services/todos.client.service.js"></script>
 	<script src="/todos/config/todos.client.route.js"></script>
+  
+  <script src="/checks/checks.client.module.js"></script>
+  <script src="/checks/controllers/checks.client.controller.js"></script>
+  <script src="/checks/services/checks.client.service.js"></script>
+  <script src="/checks/config/checks.client.route.js"></script>
+
 
 	<script src="/users/users.client.module.js"></script>
 	<script src="/users/services/auth.client.service.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script src="/lib/angular-momentjs/angular-momentjs.js"></script>
 
 	<script src="/application.js"></script>
-
-</body>
+  </body>
 </html>
+

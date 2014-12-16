@@ -15,10 +15,12 @@ module.exports = function(){
 	}else if(process.env.NODE_ENV ==='production'){
 		app.use(compress());
 	}
-
+	/*
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
+	*/
+	app.use(bodyParser());
 	app.use(methodOverride());
 	app.use(session({
 		saveUninitialized: true,
@@ -34,6 +36,8 @@ module.exports = function(){
 	require('../app/routes/index.server.route.js')(app);
 	require('../app/routes/users.server.route.js')(app);
 	require('../app/routes/todos.server.route.js')(app);
+	require('../app/routes/check.server.route.js')(app);
+
 
 	return app;
 }

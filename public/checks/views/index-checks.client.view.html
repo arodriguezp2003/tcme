@@ -1,0 +1,21 @@
+<section ng-controller="ChecksController">
+	<div class="jumbotron text-center" >
+	  <h1>Time Check</h1>
+	  <h3>Seleccione una Tarea</h3>
+	  <select 
+	  	class="form-control"
+		ng-model ="todo"
+		ng-options="todo.titulo for todo in todos"
+	  	></select>
+	  <small class="help-block"> ¿Por que no <a href="/#!/todos/create">creas una</a>?</small>
+
+	  <br>
+	  <p><a class="btn btn-primary btn-lg" ng-click="check()" role="button">Check IN</a></p>
+	</div>
+
+</section>
+<section>
+	<h3>Listado de Tareas en ejecucion</h3>
+	<hr>
+
+</section>

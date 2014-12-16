@@ -17,6 +17,11 @@ var TodoSchema = new Schema({
 		default : '',
 		trim : true
 	},
+	monto : {
+		type: Number,
+		default: 0
+	},
+	color : String, 
 	creador: {
 		type: Schema.ObjectId,
 		ref	: 'User'

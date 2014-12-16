@@ -7,6 +7,8 @@ module.exports = function() {
 	//cargar todos los modelos
 	require('../app/models/user.server.model');
 	require('../app/models/todo.server.model');
+	require('../app/models/check.server.model');
+
 
 	return db;
 } 

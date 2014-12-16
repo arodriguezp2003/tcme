@@ -5,16 +5,6 @@ var mongoose = require('mongoose'),
 
 
 
-var getErrorMessage = function(err) {
-	if (err.errors) {
-		for(var errName in err.errors){
-			if (err.errors[errName.message]) return err.errors[errName].message;
-		}
-	}else {
-		return 'Error de Servidor Desconocido'
-	}
-};
-
 // Crear un nuevo método controller para el manejo de errores
 var getErrorMessage = function(err) {
 	if (err.errors) {
@@ -34,7 +24,7 @@ exports.create = function(req, res) {
 	// Configurar la propiedad 'creador' del artículo
 	todo.creador = req.user;
 
-	console.log(todo);
+	console.log(req.user);
 	// Intentar salvar el artículo
 	todo.save(function(err) {
 		if (err) {
@@ -77,7 +67,7 @@ exports.update = function(req, res) {
 
 	// Actualizar los campos artículo
 	todo.titulo = req.body.titulo;
-	todo.contenido = req.body.contenido;
+	todo.descripcion = req.body.descripcion;
 
 	// Intentar salvar el artículo actualizado
 	todo.save(function(err) {
@@ -117,7 +107,7 @@ exports.todoByID = function(req, res, next, id) {
 	// Usar el método model 'findById' para encontrar un único artículo 
 	Todo.findById(id).populate('creador', 'firstName lastName fullName').exec(function(err, todo) {
 		if (err) return next(err);
-		if (!todo) return next(new Error('Fallo al cargar la Tarea ' + id));
+		if (!todo) return next(new Error('Fallo al scargar la Tarea ' + id + err));
 
 		// Si un artículo es encontrado usar el objeto 'request' para pasarlo al siguietne middleware
 		req.todo = todo;

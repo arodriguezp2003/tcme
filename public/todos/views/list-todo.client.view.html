@@ -1,15 +1,23 @@
 <section ng-controller="TodosController" ng-init="find()">
-	<h1>Listado de Tarreas</h1>
+	<h1>Listado de Tarreas <small> ¿Por que no <a href="/#!/todos/create">creas una</a>?</small></h1>
 	<ul>
 		<li ng-repeat="todo in todos">
-			<a ng-href="#!/todos/{{todo._id}}" ng-bind="todo.titulo"></a>
-			<small>
-				<em>Postear</em>
-				<em ng-bind="todo.creado | date: 'mediumDate'"></em>
-				<em>by</em>
-				<em ng-bind="todo.creador.firstName"></em>
-			</small>
-			<p ng-bind="todo.descripcion"></p>
+			<div class="panel panel-primary">
+			  <div class="panel-heading">
+			  	 {{todo.titulo}}
+			  </div>
+			  <div class="panel-body">
+			   <p ng-bind="todo.descripcion"></p>
+		        <small>
+					<em>Fecha de Creacion: </em>
+					<em ng-bind="todo.creado | date: 'mediumDate'"></em>
+					<em>por</em>
+					<em ng-bind="todo.creador.firstName"></em>
+			    </small>
+			    <br>
+		       <a ng-href="#!/todos/{{todo._id}}"  class="btn btn-default">TimeCheck</a>
+			  </div>
+			</div>
 		</li>
 	</ul>
 	<div ng-hide="!todos || todos.length">
